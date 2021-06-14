@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 
 import TabPanel from '../../components/TabPanel';
 import Table from '../../components/Table';
+import Timeline from '../../components/Timeline';
 
 const data = [
     { name: "ore1", value: 10, timeToMine: 5 },
@@ -19,6 +20,7 @@ const data = [
 
 function Home() {
     const [selectedTab, setSelectedTab] = useState(0);
+    const [selectedOre, setSelectedOre] = useState([]);
 
     const handleTabsChange = (evt, newTab) => {
       setSelectedTab(newTab);
@@ -37,9 +39,11 @@ function Home() {
           </Tabs>
         </AppBar>
         <TabPanel value={selectedTab} index={0}>
-            <Table data={data} />
+            <Table data={data} setSelectedOre={setSelectedOre} />
         </TabPanel>
-        <TabPanel value={selectedTab} index={1}>Item Two</TabPanel>
+        <TabPanel value={selectedTab} index={1}>
+          <Timeline data={selectedOre} />
+        </TabPanel>
     </div>
     );
 }

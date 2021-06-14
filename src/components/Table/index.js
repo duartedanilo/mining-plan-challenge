@@ -172,11 +172,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EnhancedTable(props) {
   const rows = props.data;
+  const setSelectedOre = props.setSelectedOre;
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
+
+  React.useEffect(() => {
+    const selectedIndexes = selected
+      .map(item => 
+        rows.find(itemSelected => itemSelected.name === item))
+      .sort((a, b) => a.value - b.value || a.timeToMine - b.timeToMine)
+      .reverse();
+
+    setSelectedOre(selectedIndexes);
+  }, [selected]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
