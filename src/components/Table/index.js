@@ -42,8 +42,8 @@ function stableSort(array, comparator) {
 
 const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Value' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Time to Mine' },
+  { id: 'value', numeric: true, disablePadding: false, label: 'Value' },
+  { id: 'timeToMine', numeric: true, disablePadding: false, label: 'Time to Mine' },
 ];
 
 function EnhancedTableHead(props) {
